@@ -3,27 +3,31 @@
 /*                                                        :::      ::::::::   */
 /*   get_next_line_utils.c                              :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: marcofernandezcallejon <marcofernandezc    +#+  +:+       +#+        */
+/*   By: marfern3 <marfern3@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2024/10/13 12:14:20 by marcofernan       #+#    #+#             */
-/*   Updated: 2024/10/14 22:15:40 by marcofernan      ###   ########.fr       */
+/*   Created: 2024/10/15 14:00:43 by marfern3          #+#    #+#             */
+/*   Updated: 2024/10/15 16:22:42 by marfern3         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
+
 #include "get_next_line.h"
 
-char read_into_buffer (int fd, char *buffer)
+char read_into_buffer (int fd, char *buffer) //lee unn fragmento de datos desde un archivo y los coloca en el buffer.
 {
 	int bytes_read;
-
+	
 	bytes_read = read(fd, buffer, BUFFER_SIZE);
 	if (bytes_read == -1)
-		return(NULL);
+	{
+		printf("Error fallo de lectura.\n");
+		return(-1);
+	}
 	buffer[bytes_read] = '\0';
 	return (bytes_read);
 }
 
-char *append_to_line (char *line, char *buffer)
+char *append_to_line (char *line, char *buffer) //concatena dos cadenas: una linea previamente leida y unn nuevo fragmento de datos (buffer)
 {
 	char	*new_line;
 
@@ -38,7 +42,7 @@ char *append_to_line (char *line, char *buffer)
 	return (new_line);
 }
 
-char	*save_remaining(char *buffer, char **remaining)
+char	*save_remaining(char *buffer, char **remaining) //esta función busca un salto de linea (\n) en el buffer. Si lo encuentra lo guarda en remaining.
 {
 	char *newline_pos;
 
@@ -47,7 +51,7 @@ char	*save_remaining(char *buffer, char **remaining)
 	{
 		*newline_pos = '\0';
 		free (*remaining);
-		remaining = strdup (newline_pos + 1);
+		*remaining = strdup (newline_pos + 1);
 	}
 	return (newline_pos ? strdup(buffer) : NULL);
 }
