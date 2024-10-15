@@ -3,16 +3,17 @@
 /*                                                        :::      ::::::::   */
 /*   get_next_line_utils.c                              :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: marfern3 <marfern3@student.42.fr>          +#+  +:+       +#+        */
+/*   By: marfern3 <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2024/10/13 12:14:20 by marcofernan       #+#    #+#             */
-/*   Updated: 2024/10/15 13:50:57 by marfern3         ###   ########.fr       */
+/*   Created: 2024/10/15 14:00:43 by marfern3          #+#    #+#             */
+/*   Updated: 2024/10/15 14:00:45 by marfern3         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
+
 #include "get_next_line.h"
 
-char read_into_buffer (int fd, char *buffer)
+char read_into_buffer (int fd, char *buffer) //lee unn fragmento de datos desde un archivo y los coloca en el buffer.
 {
 	int bytes_read;
 
@@ -23,7 +24,7 @@ char read_into_buffer (int fd, char *buffer)
 	return (bytes_read);
 }
 
-char *append_to_line (char *line, char *buffer)
+char *append_to_line (char *line, char *buffer) //concatena dos cadenas: una linea previamente leida y unn nuevo fragmento de datos (buffer)
 {
 	char	*new_line;
 
@@ -38,7 +39,7 @@ char *append_to_line (char *line, char *buffer)
 	return (new_line);
 }
 
-char	*save_remaining(char *buffer, char **remaining)
+char	*save_remaining(char *buffer, char **remaining) //esta función busca un salto de linea (\n) en el buffer. Si lo encuentra lo guarda en remaining.
 {
 	char *newline_pos;
 

@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   get_next_line.c                                    :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: marfern3 <marfern3@student.42.fr>          +#+  +:+       +#+        */
+/*   By: marfern3 <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2024/10/12 14:04:49 by marcofernan       #+#    #+#             */
-/*   Updated: 2024/10/15 13:50:54 by marfern3         ###   ########.fr       */
+/*   Created: 2024/10/15 13:59:35 by marfern3          #+#    #+#             */
+/*   Updated: 2024/10/15 13:59:40 by marfern3         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -34,3 +34,6 @@ char	*get_next_line(int fd)
 	}
 	return (line && *line) ? line : NULL; // line es NULL si no hemos leido nada o ya hemos devuelto todas las lineas disponibles, *line verifica si la línea no está vacía.
 }
+
+//---------------main----------------
+
