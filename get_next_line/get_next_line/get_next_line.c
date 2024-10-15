@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   get_next_line.c                                    :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: marfern3 <marvin@42.fr>                    +#+  +:+       +#+        */
+/*   By: marfern3 <marfern3@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/10/15 13:59:35 by marfern3          #+#    #+#             */
-/*   Updated: 2024/10/15 13:59:40 by marfern3         ###   ########.fr       */
+/*   Updated: 2024/10/15 14:16:55 by marfern3         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -37,3 +37,17 @@ char	*get_next_line(int fd)
 
 //---------------main----------------
 
+int main (void)
+{
+	int fd = open("archivo_prueba.txt", O_RDONLY);
+	if (fd == -1)
+		return(1);
+	char *line;
+	while ((line = get_next_line(fd)) != NULL)
+	{
+		printf("%s\n", line);
+		free(line);
+	}
+	close(fd);
+	return(0);
+}

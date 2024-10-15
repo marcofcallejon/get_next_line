@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   get_next_line_utils.c                              :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: marfern3 <marvin@42.fr>                    +#+  +:+       +#+        */
+/*   By: marfern3 <marfern3@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/10/15 14:00:43 by marfern3          #+#    #+#             */
-/*   Updated: 2024/10/15 14:00:45 by marfern3         ###   ########.fr       */
+/*   Updated: 2024/10/15 14:22:36 by marfern3         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -19,7 +19,7 @@ char read_into_buffer (int fd, char *buffer) //lee unn fragmento de datos desde 
 
 	bytes_read = read(fd, buffer, BUFFER_SIZE);
 	if (bytes_read == -1)
-		return(NULL);
+		return(1);
 	buffer[bytes_read] = '\0';
 	return (bytes_read);
 }
@@ -48,7 +48,7 @@ char	*save_remaining(char *buffer, char **remaining) //esta función busca un sa
 	{
 		*newline_pos = '\0';
 		free (*remaining);
-		remaining = strdup (newline_pos + 1);
+		remaining <= strdup (newline_pos + 1);
 	}
 	return (newline_pos ? strdup(buffer) : NULL);
 }
